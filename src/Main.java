@@ -1,10 +1,12 @@
+import Entity.Fournisseur;
+
 import java.sql.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     private static Connection con;
-    static String url = "jdbc:mysql://localhost:3306/produit";
+    static String url = "jdbc:mysql://localhost:3306/Stock";
     static String user = "root";
     static String pwd = "";
 
@@ -20,28 +22,28 @@ public class Main {
         }
         try {
             ste = con.createStatement();
-            String req="INSERT INTO `produit` (`id`, `nom`,`libelle`, `prix`, `matricule`) VALUES ('1', 'tree', 'sanawber123', '30000','12');";
+            String req="INSERT INTO `fournisseur` (`id`, `nom`,`prenom`, `email`,`adresse`) VALUES ('1', 'wassef', 'chargui', 'medwassef@esprit.tn','la goulette');";
             int res= ste.executeUpdate(req);
 
-            System.out.println("produit ajouté");
+            System.out.println("fournisseur ajouté");
         }catch (SQLException e){
             System.out.println(e);
         }
         try {
-            ResultSet resultSet = ste.executeQuery("select * from produit");
+            ResultSet resultSet = ste.executeQuery("select * from fournisseur");
             while (resultSet.next())
             {
                 int id=resultSet.getInt("id");
                 String nom=resultSet.getString(2);
+                String prenom=resultSet.getString(3);
+                String email=resultSet.getString(4);
+                String adresse=resultSet.getString(5);
 
-                String libelle=resultSet.getString(3);
-                double prix=resultSet.getDouble(4);
-                int matricule=resultSet.getInt(5);
                 System.out.println("id :"+id);
                 System.out.println("nom :"+nom);
-                System.out.println("libelle :"+libelle);
-                System.out.println("prix :"+prix);
-                System.out.println("matricule :"+matricule);
+                System.out.println("prenom :"+prenom);
+                System.out.println("email :"+email);
+                System.out.println("adresse :"+adresse);
             }
 
         }catch (SQLException e)

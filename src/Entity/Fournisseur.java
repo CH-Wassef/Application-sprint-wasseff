@@ -5,14 +5,16 @@ public class Fournisseur {
     String nom;
     String prenom;
     String email;
+    String adresse;
 
     public Fournisseur(){}
 
-    public Fournisseur(int id,String nom,String prenom,String email){
+    public Fournisseur(int id,String nom,String prenom,String email,String adresse){
         this.id=id;
         this.nom=nom;
         this.prenom=prenom;
         this.email=email;
+        this.adresse=adresse;
     }
 
     public int getId() {
